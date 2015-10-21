@@ -1,0 +1,5 @@
+/.htaccess
+/app/etc/local.xml
+/errors/local.xml
+/var/cache/*
+/var/session/*
