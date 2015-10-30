@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <magpleasure_common_js>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/common.js</script></action>
+        </reference>
+    </magpleasure_common_js>
+    <magpleasure_widget_dialog>
+        <update handle="magpleasure_common_js" />
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/widget/dialog.js</script></action>
+            <action method="addCss"><script>magpleasure/css/widget/dialog.css</script></action>
+        </reference>
+        <reference name="content">
+            <block type="magpleasure/widget_dialog_wrapper" name="magpleasure.widget.dialog" as="magpleasure_widget_dialog" />
+        </reference>
+    </magpleasure_widget_dialog>
+    <apply_glyphicons>
+        <reference name="head">
+            <action method="addCss"><style>magpleasure/vendor/glyphicons/css/glyphicons.css</style></action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>magpleasure/vendor/glyphicons/css/glyphicons-ie7-fix.css</name>
+                <params/>
+                <if>lte IE 7</if>
+            </action>
+        </reference>
+    </apply_glyphicons>
+</layout>

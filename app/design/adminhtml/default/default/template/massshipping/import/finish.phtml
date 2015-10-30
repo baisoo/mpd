@@ -1,0 +1,168 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Massshipping
+ * @version    1.0.3
+ * @copyright  Copyright (c) 2012-2013 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<div class="ms-upload">
+    <div class="ms-block ms-common-buttons">
+        <div class="to-right"><?php echo $this->getDoneButtonHtml(); ?></div>
+        <div class="fixed"></div>
+    </div>
+    <div class="ms-block ms-common-header">
+        <h4><?php echo $this->__("Match Carrier Type"); ?></h4>
+    </div>
+    <div class="ms-block ms-common-content">
+
+        <table class="ms-final-table" width="100%">
+            <colgroup>
+                <col width="70%"/>
+                <col width="30%"/>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="ms-carrier-block ms-matching-block">
+                            <form id="mp-ms-carrier-matching" enctype="multipart/form-data" action="">
+                                <?php if (!$this->getIsSendEmailDefined()): ?>
+                                <div class="checkbox">
+                                    <input type="checkbox" name="send_email_common" id="send_email" <?php if ($this->getStoredSendEmail()): ?> checked<?php endif; ?> /><label for="send_email"><?php echo $this->__("Customer Notification"); ?></label>
+                                </div>
+                                <?php endif; ?>
+                                <div class="checkbox">
+                                    <input type="checkbox" name="add_number_common" id="add_number" onchange="changeAddTrackInfo();" <?php if ($this->useTracking()): ?> checked<?php endif; ?> /><label for="add_number"><?php echo $this->__("Add Tracking Number"); ?></label>
+                                </div>
+
+                                <div class="separator"></div>
+                                <table class="ms-carrier-matching-define">
+                                    <colgroup>
+                                        <col width="120px" />
+                                        <col width="1" />
+                                        <?php if (!$this->getIsDescriptionDefined()): ?>
+                                        <col width="1" />
+                                        <?php endif; ?>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th><?php echo $this->__("Carrier"); ?></th>
+                                            <?php if (!$this->getIsDescriptionDefined()): ?>
+                                            <th><?php echo $this->__("Title"); ?></th>
+                                            <?php endif; ?>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                <?php foreach ($this->getCarrierValues() as $carrier): ?>
+                                    <tr>
+                                        <td class="first">
+                                            <div class="select ms-element carrier">
+                                                <label for="carrier_<?php echo $carrier->getId(); ?>"><?php echo $this->escapeHtml($carrier->getLabel()); ?></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="select ms-element carrier">
+                                                <select<?php if (!$this->getStoredCarrier($carrier->getId())): ?> class="carrier-input"<?php endif; ?> <?php if (!$this->useTracking()): ?>disabled<?php endif; ?> name="carrier_<?php echo $carrier->getId(); ?>" id="carrier_<?php echo $carrier->getId(); ?>" onchange="if ($('title_<?php echo $carrier->getId(); ?>')) { $('title_<?php echo $carrier->getId(); ?>').value = carriers[$('carrier_<?php echo $carrier->getId(); ?>').value]; }">
+                                                    <?php foreach($this->getCarrierOptions() as $code=>$label): ?>
+                                                    <option <?php if (!$code): ?>class="ask" <?php endif; ?>value="<?php echo $code; ?>" <?php if ($this->getStoredCarrier($carrier->getId()) == $code): ?> selected<?php endif; ?>><?php echo $label; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <?php if (!$this->getIsDescriptionDefined()): ?>
+                                        <td>
+                                            <div class="text ms-element carrier">
+                                                <input <?php if (!$this->useTracking()): ?>disabled<?php endif; ?> type="text" value="<?php echo $this->getStoredTitle($carrier->getId()); ?>" name="title_<?php echo $carrier->getId(); ?>" id="title_<?php echo $carrier->getId(); ?>" />
+                                            </div>
+                                        </td>
+                                        <?php endif; ?>
+                                    </tr>
+                                <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <script type="text/javascript">
+                                    carriers = <?php echo $this->getCarriersJson(); ?>;
+
+                                    changeAddTrackInfo = function(){
+                                        $$('#mp-ms-carrier-matching .ms-element input, #mp-ms-carrier-matching .ms-element select').each(function(el){
+
+                                            if ($('add_number').checked){
+                                                $(el).disabled = false;
+                                                $(el).removeClassName('disabled');
+                                            } else {
+                                                $(el).disabled = true;
+                                                $(el).addClassName('disabled');
+                                            }
+                                        });
+                                    };
+                                    changeAddTrackInfo();
+                                    decorateGeneric($$('table.ms-carrier-matching-define thead tr th'), ['odd','even','first','last']);
+                                </script>
+                                <?php if (!$this->getIsNumberDefined()): ?>
+                                <div class="separator"></div>
+                                <div class="text ms-element">
+                                    <label for="default_number"><?php echo $this->__("Default Tracking Number"); ?></label><br />
+                                    <input type="text" name="number_common" id="default_number" value="<?php echo $this->getStoredDefaultNumber() ?>" <?php if (!$this->useTracking()): ?>disabled<?php endif; ?> />
+                                </div>
+                                <?php endif; ?>
+
+
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="status_block" class="ms-status-block ms-matching-block">
+                            <div class="counter">
+                                <span class="progress" id="progress_complete"><?php echo $this->getProgressComplete(); ?></span>&nbsp;/&nbsp;<span class="progress" id="progress_total"><?php echo $this->getProgressTotal(); ?></span>
+                            </div>
+                            <div class="counter">
+                                <span class="progress progress-label"><?php echo $this->__("Orders Processed"); ?></span>
+                            </div>
+                            <div class="progress-status-wrapper">
+                                <div id="progress_loader" class="progress-status">
+                                    <span class="progress-status-label active"><?php echo $this->__("Process"); ?></span>
+                                    <span class="progress-status-label ready"><?php echo $this->__("Ready to Go"); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            <?php echo $this->_helper()->getJsObjectName(); ?>.processData({
+                                progress_loader: 'progress_loader',
+                                status_block: 'status_block',
+                                progress_complete: 'progress_complete',
+                                progress_total: 'progress_total',
+                                progress_status_label: 'progress_status_label',
+                                form: $('mp-ms-carrier-matching')
+                            });
+                        </script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="ms-block ms-common-footer">
+        <?php echo $this->getChangeMatchingHtml(); ?>
+    </div>
+</div>

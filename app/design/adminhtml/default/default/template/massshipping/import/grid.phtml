@@ -1,0 +1,138 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Massshipping
+ * @version    1.0.3
+ * @copyright  Copyright (c) 2012-2013 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<div class="ms-upload">
+    <div class="ms-block ms-common-buttons">
+        <div class="to-right"><?php echo $this->getNextButtonHtml(); ?></div>
+        <div class="fixed"></div>
+    </div>
+    <div class="ms-block ms-common-content">
+        <?php if ($this->getRows()->getSize() && $this->getColumns()->getSize()): ?>
+        <?php $pattern = "<ul class=\"messages\"><li class=\"error-msg\"><ul><li><span>%s</span></li></ul></li></ul>"; ?>
+        <script type="text/javascript">
+            columns = new MpMassShippingColumns({
+                form_id: 'data-match-form',
+                match_data: <?php echo $this->getMatchJson(); ?>,
+                undefined_label: '<?php echo $this->getUndefinedLabel(); ?>',
+                unresolved_message: '<?php echo sprintf($pattern, $this->__("You have some unresolved columns.")); ?>',
+                unmatched_message: '<?php echo sprintf($pattern, $this->__("Order # is required to be matched.")); ?>',
+                required_matches: ['order_id']
+            });
+
+            <?php echo $this->_helper()->getJsObjectName(); ?>.setColums(columns);
+        </script>
+        <form id="data-match-form" action="" enctype="multipart/form-data">
+            <table class="data-matching-grid" cellpadding="0" cellspacing="0">
+                <colgroup>
+                    <?php foreach ($this->getColumns() as $column): ?>
+                    <col width="1" />
+                    <?php endforeach; ?>
+                </colgroup>
+                <thead>
+                    <tr>
+                    <?php $isFirst = true; ?>
+                    <?php foreach ($this->getColumns() as $column): ?>
+                        <th id="column_<?php echo $column->getId(); ?>">
+                            <div class="data-matching-grid-status" id="status_column_<?php echo $column->getId(); ?>">
+                                <div class="column-name"><span class="name" id="name_column_<?php echo $column->getId(); ?>"><?php echo $column->getDefinedName(); ?></span></div>
+                                <div class="delete"><span class="delete"><?php echo $this->__("Won't be imported"); ?></span></div>
+                                <div class="links">
+                                    <a class="link" href="#" onclick="columns.activateColumn(columns.getColumn(<?php echo $column->getId(); ?>)); return false;" title="<?php echo $this->__("Edit"); ?>"><?php echo $this->__("Edit"); ?></a>
+                                    <span class="separattor">|</span>
+                                    <a class="delete_link link" href="#" onclick="columns.deleteColumn(<?php echo $column->getId(); ?>); return false;" title="<?php echo $this->__("Delete"); ?>"><?php echo $this->__("Delete"); ?></a>
+                                </div>
+                            </div>
+                            <div class="data-matching-grid-form" id="form_column_<?php echo $column->getId(); ?>" style="display: none;">
+                                <div class="data-grid-label-container">
+                                    <label for="select_column_<?php echo $column->getId(); ?>"><?php echo $this->__("Name This Column"); ?></label>
+                                </div>
+                                <div class="data-grid-select-container">
+                                    <select name="column_<?php echo $column->getId(); ?>" id="select_column_<?php echo $column->getId(); ?>">
+                                        <?php foreach($column->getMatchTypes() as $value=>$label): ?>
+                                        <option value="<?php echo $value; ?>"<?php if ($value == $column->getMatchKey()): ?> selected="true"<?php endif; ?>><?php echo $label; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="data-grid-buttons">
+                                    <?php if (!$isFirst): ?>
+                                    <a href="#" onclick="columns.stepBackFrom(<?php echo $column->getId(); ?>); return false;" title="<?php echo $this->__("Back"); ?>"><?php echo $this->__("Back"); ?></a>
+                                    <?php endif; ?>
+                                    <?php echo $this->getOkButtonHtml($column); ?>
+                                    <?php echo $this->getDeleteColumnButtonHtml($column); ?>
+                                    <?php $isFirst = false; ?>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                columns.registerColumn({
+                                    id: <?php echo $column->getId(); ?>,
+                                    column_id: 'column_<?php echo $column->getId(); ?>',
+                                    status_id: 'status_column_<?php echo $column->getId(); ?>',
+                                    form_id: 'form_column_<?php echo $column->getId(); ?>',
+                                    is_active: <?php echo $column->getIsActive() ? 'true' : 'false'; ?>,
+                                    is_resolved: <?php echo $column->getIsResolved() ? 'true' : 'false'; ?>,
+                                    is_deleted: <?php echo $column->getIsDeleted() ? 'true' : 'false'; ?>,
+                                    deleted: false,
+                                    match_key: '<?php echo $column->getMatchKey(); ?>',
+                                    select_id: 'select_column_<?php echo $column->getId(); ?>',
+                                    label_id: 'name_column_<?php echo $column->getId(); ?>'
+                                });
+                            </script>
+                        </th>
+                    <?php endforeach; ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->getRows() as $row): ?>
+                    <tr id="row_<?php echo $row->getId(); ?>">
+                        <?php foreach ($this->getColumns() as $column): ?>
+                        <td class="column_<?php echo $column->getId(); ?>"><?php echo $this->escapeHtml($row->getCellByColumnId($column->getId())->getValue()); ?></td>
+                        <?php endforeach; ?>
+                        <script type="text/javascript">
+                            decorateGeneric($$('table.data-matching-grid tbody tr#row_<?php echo $row->getId(); ?> td'), ['odd','even','first','last']);
+                        </script>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </form>
+        <script type="text/javascript">
+            decorateGeneric($$('table.data-matching-grid thead tr'), ['odd','even','first','last']);
+            decorateGeneric($$('table.data-matching-grid thead tr th'), ['odd','even','first','last']);
+            decorateGeneric($$('table.data-matching-grid tbody tr'), ['odd','even','first','last']);
+
+            columns.activateColumn(columns.getFirstUnresolved());
+            columns.renderColumns();
+        </script>
+        <?php endif; ?>
+    </div>
+    <div class="ms-block ms-common-footer">
+        <?php echo $this->getCancelAndReloadLinkHtml(); ?>
+        <div class="to-right"><?php echo $this->getDeleteButtonHtml(); ?></div>
+        <div class="fixed"></div>
+    </div>
+</div>

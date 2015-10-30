@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <massshipping_import_index>
+        <reference name="head">
+            <action method="addCss"><styles>massshipping/css/styles.css</styles></action>
+            <action method="addJs"><script>massshipping/script.js</script></action>
+            <action method="addJs"><script>massshipping/ajax-upload.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="massshipping/adminhtml_import" name="massshipping" />
+        </reference>
+    </massshipping_import_index>
+
+</layout>

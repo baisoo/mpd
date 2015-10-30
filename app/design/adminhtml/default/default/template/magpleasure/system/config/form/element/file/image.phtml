@@ -1,0 +1,119 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Common
+ * @version    0.6.0
+ * @copyright  Copyright (c) 2012-2013 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<?php
+if(Mage::app()->getRequest()->getControllerName() == 'catalog_product_action_attribute') {
+    $attributeName = "attributes[{$this->getName()}]";
+} else {
+    $attributeName = $this->getName();
+}
+?>
+
+<div class="mp-file-image-container" class="ng-app: com.magpleasure.widgets.file.image">
+    <input class="input-file" type="file" name="<?php echo $attributeName; ?>" id="<?php echo $this->getHtmlId(); ?>" <?php if ($this->getCanUseDefaultValue() || $this->getCanUseWebsiteValue()) { echo ' disabled'; } ?>/>
+    <input type="hidden" name="" id="<?php echo $this->getHtmlId(); ?>_data" value="{}" />
+
+    <div class="mp-file-progress-container invisible" id="<?php echo $this->getHtmlId(); ?>-progress-container">
+        <div class="mp-file-progress-bar" style="width: 0%;" id="<?php echo $this->getHtmlId(); ?>-progress-bar"></div>
+    </div>
+
+    <div class="mp-file-thumbnail invisible" id="<?php echo $this->getHtmlId(); ?>-thumbnail">
+        <?php if ($this->hasImage()): ?>
+        <img src="<?php echo $this->getIconUrl(); ?>" />
+        <?php endif; ?>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    jQuery('#<?php echo $this->getHtmlId(); ?>').fileupload({
+        dataType: 'json',
+        url: '<?php echo $this->getUploadUrl(); ?>',
+        done: function (e, data) {
+
+            var pBarContainer;
+            if (pBarContainer = jQuery('#<?php echo $this->getHtmlId(); ?>-progress-container')){
+
+                if (!pBarContainer.hasClass('invisible')){
+                    pBarContainer.addClass('invisible');
+                }
+
+                var pBar;
+                if (pBar = jQuery('#<?php echo $this->getHtmlId(); ?>-progress-bar')){
+                    pBar.css('width', '0%');
+                }
+            }
+
+            if (data.result && data.result['<?php echo $attributeName; ?>']){
+                var file = data.result['<?php echo $attributeName; ?>'];
+
+                if (file && file.length){
+
+
+
+                    var imgContainer = jQuery('#<?php echo $this->getHtmlId(); ?>-thumbnail');
+                    if (imgContainer){
+                        imgContainer.removeClass('invisible');
+                    }
+
+                    var img = jQuery('#<?php echo $this->getHtmlId(); ?>-thumbnail img');
+                    if (img){
+
+                        img.attr('src', file[0].thumbnail_url);
+
+                    }
+
+
+
+
+                }
+            }
+        },
+        progressall: function (e, data) {
+
+            var pBarContainer;
+            if (pBarContainer = jQuery('#<?php echo $this->getHtmlId(); ?>-progress-container')){
+
+                if (pBarContainer.hasClass('invisible')){
+                    pBarContainer.removeClass('invisible');
+                }
+
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                var pBar;
+                if (pBar = jQuery('#<?php echo $this->getHtmlId(); ?>-progress-bar')){
+                    pBar.css('width', progress + progress * 0.05 + '%');
+                }
+            }
+
+
+        }
+    });
+
+
+</script>

@@ -1,0 +1,56 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Massshipping
+ * @version    1.0.3
+ * @copyright  Copyright (c) 2012-2013 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<div class="ms-upload">
+    <div class="ms-block ms-common-buttons">
+        <?php echo $this->getChangeMehtodButtonHtml(); ?>
+    </div>
+    <div class="ms-block ms-common-header">
+        <h4><?php echo $this->__("Upload File"); ?></h4>
+    </div>
+    <div class="ms-block ms-common-content">
+        <div class="input-container" onclick="">
+<!--            <input type="file" name="data_file" onchange="$('display-name').innerHTML = $('data-file').value.replace(/C:\\fakepath\\/i, '');" id="data-file" />-->
+            <div class="display-name" id="display-name"></div>
+            <div class="label-container">
+                <label><strong><?php echo $this->__("File types accepted:"); ?></strong>&nbsp;<?php echo $this->__("CSV"); ?></label>
+                <div id="upload-loader" class="upload-loader" style="display: none;"><img src="<?php echo $this->getSkinUrl("massshipping/images/loader.gif"); ?>" alt="<?php echo $this->__("Loading..."); ?>" /></div>
+                <div class="fixed"></div>
+            </div>
+            <div class="browse-button"><?php echo $this->getBrowseButtonHtml(); ?></div>
+        </div>
+        <div class="fixed"></div>
+        <script type="text/javascript">
+            <?php echo $this->getJsName(); ?>.registerFormElements('display-name');
+
+        </script>
+    </div>
+    <div class="ms-block ms-common-footer">
+        <?php echo $this->getImportButtonHtml(); ?>
+    </div>
+</div>

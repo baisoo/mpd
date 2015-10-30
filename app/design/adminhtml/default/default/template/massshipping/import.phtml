@@ -1,0 +1,65 @@
+<?php
+/**
+ * MagPleasure Ltd.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE-CE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magpleasure.com/LICENSE-CE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * MagPleasure does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * Magpleasure does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   MagPleasure
+ * @package    Magpleasure_Massshipping
+ * @version    1.0.3
+ * @copyright  Copyright (c) 2012-2013 MagPleasure Ltd. (http://www.magpleasure.com)
+ * @license    http://www.magpleasure.com/LICENSE-CE.txt
+ */
+?>
+<script type="text/javascript">
+    var <?php echo $this->getJsName(); ?> = new MpMassShipping({
+        interface_url: '<?php echo $this->getInterfaceUrl(); ?>',
+        upload_url: '<?php echo $this->getUploadUrl(); ?>',
+        xml_upload_url: '<?php echo $this->getXmlUploadUrl(); ?>',
+        post_url: '<?php echo $this->getPostUrl(); ?>',
+        post_excel_url: '<?php echo $this->getPostExcelUrl(); ?>',
+        register_url: '<?php echo $this->getRegisterUrl(); ?>',
+        process_url: '<?php echo $this->getProcessUrl(); ?>',
+        pressed_class: 'pressed',
+        button_timeout: 300,
+        current_page: 'home',
+        container_id: 'massshipping-content',
+        button_selector: 'button.ms-button',
+        loader_id: 'upload-loader',
+        select_file_message: '<?php echo "<ul class=\"messages\"><li class=\"error-msg\"><ul><li><span>".$this->__("Please select file with data.")."<\/span><\/li><\/ul><\/li><\/ul>"; ?>',
+        unmatched_carrier_error: '<?php echo "<ul class=\"messages\"><li class=\"error-msg\"><ul><li><span>".$this->__("You still have some unmatched carrier type.")."<\/span><\/li><\/ul><\/li><\/ul>"; ?>'
+    });
+
+</script>
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody>
+        <tr>
+            <td style="width:50%;"><h3 class="icon-head"><?php echo $this->__("Import Shipping Data"); ?></h3></td>
+            <td class="form-buttons"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="massshipping-content" class="massshipping-content">
+    <?php echo $this->getResultMessages(); ?>
+    <?php echo $this->getContentHtml(); ?>
+</div>
+
+
+
