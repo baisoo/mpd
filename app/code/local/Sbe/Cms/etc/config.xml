@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category	SbeCms
+ * @package		SBE
+ * @author		SBE
+ * @copyright	Copyright 2015 Sbe
+ */
+-->
+<config>
+    <modules>
+        <Sbe_Cms>
+            <version>0.0.1</version>
+        </Sbe_Cms>
+    </modules>
+</config>
