@@ -13,4 +13,13 @@
             <version>1.0.2</version>
         </Sbe_Cms>
     </modules>
+    <global>
+    	<ressources>
+    		<sbe_cms_setup>
+    			<setup>
+    				<module>Sbe_Cms</module>
+    			</setup>
+    		</sbe_cms_setup>
+    	</ressources>
+    </global>
 </config>
