@@ -7,7 +7,7 @@ $cmsContent='Contenu de la page test';
 $this->run("
     
     INSERT INTO `cms_page` (
-    `page_id`,
+    
      `title`, 
      `root_template`, 
      `meta_keywords`, 
@@ -30,7 +30,7 @@ $this->run("
      `meta_robots`, 
      `exclude_from_sitemap`) 
      VALUES
-(1, 
+( 
 'PAGETEST', 
 'two_columns_right', 
 'PAGETEST keywords', 
