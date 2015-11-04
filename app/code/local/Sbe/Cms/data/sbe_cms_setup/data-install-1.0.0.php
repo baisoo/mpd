@@ -7,7 +7,6 @@ $cmsContent='Contenu de la page test';
 $this->run("
     
     INSERT INTO `cms_page` (
-    
      `title`, 
      `root_template`, 
      `meta_keywords`, 
@@ -28,10 +27,8 @@ $this->run("
      `meta_title`, 
      `mageworx_hreflang_identifier`, 
      `meta_robots`, 
-     `exclude_from_sitemap`) 
-     VALUES
-( 
-'PAGETEST', 
+     `exclude_from_sitemap`) VALUES
+('PAGETEST', 
 'two_columns_right', 
 'PAGETEST keywords', 
 'PAGETEST', 
