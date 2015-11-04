@@ -14,12 +14,12 @@
         </Sbe_Cms>
     </modules>
     <global>
-    	<ressources>
+    	<resources>
     		<sbe_cms_setup>
     			<setup>
     				<module>Sbe_Cms</module>
     			</setup>
     		</sbe_cms_setup>
-    	</ressources>
+    	</resources>
     </global>
 </config>

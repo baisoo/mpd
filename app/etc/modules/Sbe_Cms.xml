@@ -1,0 +1,9 @@
+
+<config>
+    <modules>
+        <Sbe_Cms>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sbe_Cms>
+    </modules>
+</config>
