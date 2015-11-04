@@ -1,9 +1,11 @@
 <?php
 
+$this->startSetup();
+
 
 $cmsContent="Contenu de la page test";
 
-$installer->run("
+$this->run("
     
     INSERT INTO `{$this->getTable('cms_page')}`
         (`title`,
@@ -42,5 +44,7 @@ $installer->run("
 `store_id`) VALUES
     (LAST_INSERT_ID(), ".$storeId.");
     ");
+
+$this->endSetup();
 
 ?>
