@@ -1,7 +1,7 @@
 <?php
 
 
-$cmsContent="Contenu de la page test";
+$cmsContent="Contenu du bloc test Thomas";
 
 $installer->run("
     
@@ -22,12 +22,12 @@ $installer->run("
             `custom_theme_from`,
             `custom_theme_to`)
     VALUES (
-    'PAGE TEST',
+    'block_product_tab_thomas',
     'two_columns_right',
-    'PAGE TEST SET UP'
-    'PAGE TEST SET UP',
-    'page_test',
-    'PAGE TEST',
+    'block_product_tab_thomas'
+    'block_product_tab_thomas',
+    'block_product_tab_thomas',
+    'block_product_tab_thomas',
      $cmsContent,
      now(),
      now(),
@@ -43,5 +43,4 @@ $installer->run("
     (LAST_INSERT_ID(), ".$storeId.");
     ");
 }
-
 ?>
