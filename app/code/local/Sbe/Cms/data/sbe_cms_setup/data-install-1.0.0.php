@@ -2,7 +2,7 @@
 
 $this->startSetup();
 
-$cmsContent="Contenu de la page test";
+$cmsContent='Contenu de la page test';
 
 $this->run("
     
