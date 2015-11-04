@@ -2,7 +2,6 @@
 
 $this->startSetup();
 
-
 $cmsContent="Contenu de la page test";
 
 $this->run("
@@ -42,6 +41,7 @@ $this->run("
 
     INSERT INTO `{$this->getTable('cms/page_store')}` (`page_id`) VALUES
     (LAST_INSERT_ID());
+    
     ");
 
 $this->endSetup();
