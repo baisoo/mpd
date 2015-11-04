@@ -42,6 +42,5 @@ $installer->run("
 `store_id`) VALUES
     (LAST_INSERT_ID(), ".$storeId.");
     ");
-}
 
 ?>
