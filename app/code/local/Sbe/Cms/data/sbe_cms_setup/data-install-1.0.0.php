@@ -39,8 +39,8 @@ $this->run("
      NULL,
      NULL);
 
-    INSERT INTO `{$this->getTable('cms/page_store')}` (`page_id`) VALUES
-    (LAST_INSERT_ID());
+    INSERT INTO `{$this->getTable('cms/page_store')}` (`page_id`,`store_id`) VALUES
+    (LAST_INSERT_ID(),0);
     
     ");
 
