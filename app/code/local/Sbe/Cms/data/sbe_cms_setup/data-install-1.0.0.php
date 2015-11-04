@@ -29,7 +29,7 @@ $this->run("
     'PAGE TEST SET UP',
     'page_test',
     'PAGE TEST',
-     $cmsContent,
+     '{$cmsContent}',
      now(),
      now(),
      1,
