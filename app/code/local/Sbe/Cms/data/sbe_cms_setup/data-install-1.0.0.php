@@ -33,11 +33,8 @@ $this->run("
 'PAGETEST keywords', 
 'PAGETEST', 
 'no-route', 
-NULL,'PAGETEST contenu', now(), now(), 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', 0),
-
-
-    
-    ");
+NULL,'PAGETEST contenu', now(), now(), 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', 0)
+");
 
 $this->endSetup();
 
