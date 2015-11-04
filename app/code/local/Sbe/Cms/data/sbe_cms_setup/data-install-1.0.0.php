@@ -6,41 +6,39 @@ $cmsContent='Contenu de la page test';
 
 $this->run("
     
-    INSERT INTO `{$this->getTable('cms_page')}`
-        (`title`,
-        `root_template`,
-        `meta_keywords`,
-        `meta_description`,
-        `identifier`,
-        `content_heading`,
-        `content`,
-            `creation_time`,
-            `update_time`,
-            `is_active`,
-            `sort_order`,
-            `layout_update_xml`,
-            `custom_theme`,
-            `custom_theme_from`,
-            `custom_theme_to`)
-    VALUES (
-    'PAGE TEST',
-    'two_columns_right',
-    'PAGE TEST SET UP'
-    'PAGE TEST SET UP',
-    'page_test',
-    'PAGE TEST',
-     '{$cmsContent}',
-     now(),
-     now(),
-     1,
-     0,
-     NULL,
-     NULL,
-     NULL,
-     NULL);
+    INSERT INTO `cms_page` (
+    `page_id`,
+     `title`, 
+     `root_template`, 
+     `meta_keywords`, 
+     `meta_description`, 
+     `identifier`, 
+     `content_heading`, 
+     `content`, 
+     `creation_time`, 
+     `update_time`, 
+     `is_active`, 
+     `sort_order`, 
+     `layout_update_xml`, 
+     `custom_theme`, 
+     `custom_root_template`, 
+     `custom_layout_update_xml`, 
+     `custom_theme_from`, 
+     `custom_theme_to`, 
+     `meta_title`, 
+     `mageworx_hreflang_identifier`, 
+     `meta_robots`, 
+     `exclude_from_sitemap`) 
+     VALUES
+(1, 
+'PAGETEST', 
+'two_columns_right', 
+'PAGETEST keywords', 
+'PAGETEST', 
+'no-route', 
+NULL,'PAGETEST contenu', now(), now(), 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', 0),
 
-    INSERT INTO `{$this->getTable('cms/page_store')}` (`page_id`,`store_id`) VALUES
-    (LAST_INSERT_ID(),0);
+
     
     ");
 
