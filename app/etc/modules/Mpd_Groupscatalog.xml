@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module created to rewrite Netzarbeiter_GroupsCatalog2
+ *
+ * @category    Mpd
+ * @package     Mpd_Groupscatalog
+ * @author      Tangkoko <support@tangkoko.com>
+ * @copyright   Copyright (c) 2016 Tangkoko (http://www.tangkoko.com)
+ * @license     All rights reserved
+ */
+-->
+<config>
+    <modules>
+        <Mpd_Groupscatalog>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Netzarbeiter_GroupsCatalog2 />
+            </depends>
+        </Mpd_Groupscatalog>
+    </modules>
+</config>

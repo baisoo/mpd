@@ -64,7 +64,7 @@ $this->addAttribute($entity, 'visibility_group', array(
     'label'             => 'Visibility Group',
     'visible'           => true,
     'required'          => true,
-    'type'              => 'static',
+    'type'              => 'int',
     'input'             => 'select',
     'source'            => 'customer/customer_attribute_source_group',
     'default_value' => '',
