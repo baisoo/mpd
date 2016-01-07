@@ -1,0 +1,100 @@
+
+<div class="content-header">
+	<table cellspacing="0">
+		<tr>
+			<td><h3 class="head-dashboard"><?php echo $this->__('Logs') ?></h3></td>
+		</tr>
+	</table>
+</div>
+
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4><?php echo $this->__('Configuration') ?></h4>
+	</div>
+	<fieldset class="bold">
+		<table class="form-list" cellspacing="0">
+			<tbody>
+				<tr>
+					<td class="label">
+						<label for="srcLog">
+							<?php echo $this->__('Choose your logs') ?>
+						</label>
+					</td>
+					<td class="value">
+						<select name="srcLog" id="srcLog" onChange="showMeLogs()" style="width:250px;">
+							<option value="0"></option>
+							<?php
+							$logs = $this->getLogs();
+							if(count($logs) >0) {
+								foreach($logs as $log) {
+									echo '<option value="'.$log.'">'.$log.'</option>';
+								}
+							}
+							?>
+						</select>
+
+						<button id="delete_log" style="display:none;" class="scalable delete" type="button" onclick="deleteLog()"><span><?php echo $this->__("Delete Log") ?></span></button>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="label">
+						<label for="sizeLog">
+							<?php echo $this->__("Number of bytes to load") ?>
+						</label>
+					</td>
+					<td class="value">
+						<select name="sizeLog" id="sizeLog" onChange="showMeLogs()" style="width:100px;">
+							<option value="1">1<?php echo $this->__("Kb") ?></option>
+							<option value="10">10<?php echo $this->__("Kb") ?></option>
+							<option value="100">100<?php echo $this->__("Kb") ?></option>
+							<option value="1000">1<?php echo $this->__("Mb") ?></option>
+							<option value="all"><?php echo $this->__("All") ?></option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="label">
+						<label for="intervalLog">
+							<?php echo $this->__("Interval Refresh") ?>
+						</label>
+					</td>
+					<td class="value">
+						<select name="intervalLog" id="intervalLog" onChange="showMeLogs()" style="width:100px;">
+							<option value="3000">3s</option>
+							<option value="6000">6s</option>
+							<option value="10000">10s</option>
+							<option value="20000">2s</option>
+							<option value="30000">30s</option>
+							<option value="60000">1mn</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+</div>
+
+<div id="loadingmask" style="display: none; width:400px; height:150px; border:1px solid #FF8630; background-color: #FFF4E9; z-index:20; margin:auto; text-align:center; padding-top:100px">
+	<div class="loader" id="loading-mask-loader">
+		<img src="<?php echo str_replace("index.php/","",$this->getUrl()) ?>skin/adminhtml/default/default/images/ajax-loader-tr.gif" alt="<?php echo $this->__('Loading...') ?>"/>
+	</div>
+	<div id="loading-mask"></div>
+</div>
+
+<div class="entry-edit" id="logs" style="display: none;">
+	<div class="entry-edit-head">
+		<h4><?php echo $this->__('Result') ?></h4>
+	</div>
+	<fieldset class="bold">
+		<div id="admintools_logs"></div>
+	</fieldset>
+</div>
+
+<script type="text/javascript">
+	var seeLogUrl = '<?php echo Mage::helper("adminhtml")->getUrl("tangkoko_admintools/adminhtml_logs/showLogs/") ?>';
+	var deleteLogUrl = '<?php echo Mage::helper("adminhtml")->getUrl("admintools/adminhtml_logs/deleteLog/") ?>';
+
+	Translator.add('delete confirm message','<?php echo Mage::helper('tangkoko_admintools')->__('Are you sure you want to do this?')?>');
+</script>
