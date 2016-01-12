@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Tangkoko
+ * @package     Tangkoko_All
+ * @author      Tangkoko <support@tangkoko.com>
+ * @copyright   Copyright (c) 2015 Tangkoko (http://www.tangkoko.com)
+ * @license     All rights reserved
+ */
+-->
+<config>
+    <modules>
+        <Tangkoko_All>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Tangkoko_All>
+    </modules>
+</config>

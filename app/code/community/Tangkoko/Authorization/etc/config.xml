@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Tangkoko
+ * @package     Tangkoko_Authorization
+ * @author      Tangkoko <support@tangkoko.com>
+ * @copyright   Copyright (c) 2015 Tangkoko (http://www.tangkoko.com)
+ * @license     All rights reserved
+ */
+-->
+<config>
+    <modules>
+        <Tangkoko_Authorization>
+            <version>1.0.0</version>
+        </Tangkoko_Authorization>
+    </modules>
+    <global>
+        <models>
+            <tangkoko_authorization>
+                <class>Tangkoko_Authorization_Model</class>
+            </tangkoko_authorization>
+            <customer>
+                <rewrite>
+                    <session>Tangkoko_Authorization_Model_Customer_Session</session>
+                </rewrite>
+            </customer>
+        </models>
+        <helpers>
+            <tangkoko_authorization>
+                <class>Tangkoko_Authorization_Helper</class>
+            </tangkoko_authorization>
+        </helpers>
+        <blocks>
+            <tangkoko_authorization>
+                <class>Tangkoko_Authorization_Block</class>
+            </tangkoko_authorization>
+        </blocks>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <tangkoko_authorization>
+                        <class>Tangkoko_Authorization_Model_Observer</class>
+                        <method>onFrontendActionDispatch</method>
+                    </tangkoko_authorization>
+                </observers>
+            </controller_action_predispatch>
+            <controller_action_predispatch_customer_account_login>
+                <observers>
+                    <tangkoko_authorization>
+                        <class>Tangkoko_Authorization_Model_Observer</class>
+                        <method>setRedirectRefererOnLogin</method>
+                    </tangkoko_authorization>
+                </observers>
+            </controller_action_predispatch_customer_account_login>
+        </events>
+        <translate>
+            <modules>
+                <tangkoko_authorization>
+                    <files>
+                        <default>Tangkoko_Authorization.csv</default>
+                    </files>
+                </tangkoko_authorization>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <tangkoko_authorization>
+                    <file>tangkoko/authorization.xml</file>
+                </tangkoko_authorization>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <store_authorization>
+            <general>
+                <public_actions>#customer\/account\/(log(in|out)|forgotpassword|resetpassword|create|loginPost)#</public_actions>
+                <anonymous_customer_redirect>login</anonymous_customer_redirect>
+                <unauthorized_customer_redirect>page</unauthorized_customer_redirect>
+                <error_page>home</error_page>
+                <home_page>home</home_page>
+            </general>
+        </store_authorization>
+    </default>
+    <adminhtml>
+        <translate>
+            <modules>
+                <tangkoko_authorization>
+                    <files>
+                        <default>Tangkoko_Authorization.csv</default>
+                    </files>
+                </tangkoko_authorization>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>

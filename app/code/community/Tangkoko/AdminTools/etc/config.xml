@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Tangkoko_AdminTools>
+			<version>1.0.0</version>
+		</Tangkoko_AdminTools>
+	</modules>
+
+	<admin>
+		<routers>
+			<tangkoko_admintools>
+				<use>admin</use>
+				<args>
+					<module>Tangkoko_AdminTools</module>
+					<frontName>tangkoko_admintools</frontName>
+				</args>
+			</tangkoko_admintools>
+		</routers>
+	</admin>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<tangkoko_admintools>
+					<file>tangkoko/admintools.xml</file>
+				</tangkoko_admintools>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<tangkoko_admintools>
+					<files>
+						<default>Tangkoko_Admintools.csv</default>
+					</files>
+				</tangkoko_admintools>
+			</modules>
+		</translate>
+	</adminhtml>
+
+	<global>
+		<blocks>
+			<tangkoko_admintools>
+				<class>Tangkoko_AdminTools_Block</class>
+			</tangkoko_admintools>
+		</blocks>
+		<helpers>
+			<tangkoko_admintools>
+				<class>Tangkoko_AdminTools_Helper</class>
+			</tangkoko_admintools>
+		</helpers>
+		<models>
+			<tangkoko_admintools>
+				<class>Tangkoko_AdminTools_Model</class>
+			</tangkoko_admintools>
+		</models>
+		<events>
+			<controller_action_predispatch >
+				<observers>
+					<tangkoko_admintools>
+						<class>Tangkoko_AdminTools_Model_Observer</class>
+						<method>setPhpIniConfig</method>
+					</tangkoko_admintools>
+				</observers>
+			</controller_action_predispatch >
+		</events>
+	</global>
+
+	<!-- Default Value to config -->
+	<default>
+		<tangkoko_admintools>
+			<log>
+				<log_active>1</log_active>
+			</log>
+
+			<cron>
+				<cron_active>1</cron_active>
+			</cron>
+
+			<login>
+				<login_active>1</login_active>
+				<login_ip>127.0.0.1</login_ip>
+			</login>
+
+			<phpinfo>
+				<phpinfo_active>1</phpinfo_active>
+			</phpinfo>
+
+			<phpini>
+				<phpini_active>1</phpini_active>
+				<memory_limit>256</memory_limit>
+				<max_execution_time>30</max_execution_time>
+			</phpini>
+		</tangkoko_admintools>
+	</default>
+</config>

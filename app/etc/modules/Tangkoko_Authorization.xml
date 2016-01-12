@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category    Tangkoko
+ * @package     Tangkoko_Authorization
+ * @author      Tangkoko <support@tangkoko.com>
+ * @copyright   Copyright (c) 2015 Tangkoko (http://www.tangkoko.com)
+ * @license     All rights reserved
+ */
+-->
+<config>
+    <modules>
+        <Tangkoko_Authorization>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Tangkoko_All />
+                <Mage_Customer />
+            </depends>
+        </Tangkoko_Authorization>
+    </modules>
+</config>
