@@ -1,0 +1,8 @@
+a:5:{i:0;s:150:"Error in file: "C:\wamp\www\mpd\app\code\local\Sbe\Cms\data\sbe_cms_setup\data-install-0.0.1.php" - A page URL key for specified store already exists.";i:1;s:784:"#0 C:\wamp\www\mpd\app\code\core\Mage\Core\Model\Resource\Setup.php(645): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 C:\wamp\www\mpd\app\code\core\Mage\Core\Model\Resource\Setup.php(391): Mage_Core_Model_Resource_Setup->_modifyResourceDb('data-install', '', '0.0.1')
+#2 C:\wamp\www\mpd\app\code\core\Mage\Core\Model\Resource\Setup.php(289): Mage_Core_Model_Resource_Setup->_installData('0.0.1')
+#3 C:\wamp\www\mpd\app\code\core\Mage\Core\Model\Resource\Setup.php(269): Mage_Core_Model_Resource_Setup->applyDataUpdates()
+#4 C:\wamp\www\mpd\app\code\core\Mage\Core\Model\App.php(362): Mage_Core_Model_Resource_Setup::applyAllDataUpdates()
+#5 C:\wamp\www\mpd\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#6 C:\wamp\www\mpd\index.php(82): Mage::run('', 'store')
+#7 {main}";s:3:"url";s:73:"/mpd/index.php/admin/cms_page/index/key/b05716840a2f9498afe08d588442f31f/";s:11:"script_name";s:14:"/mpd/index.php";s:4:"skin";s:7:"default";}
