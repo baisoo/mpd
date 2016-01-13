@@ -16,11 +16,9 @@ class Mpd_Groupscatalog_Model_Observer extends Mage_Core_Model_Abstract
      */
     public function addVisibilityGroupInSession($observer)
     {
-        Mage::log(__METHOD__);
         $customerSession = $observer->getEvent()->getCustomerSession();
         $customer  = Mage::getModel('customer/customer')->load($customerSession->getId());
         $attr = $customer->getData('visibility_group');
         $customerSession->setVisibilityGroup($attr);
-        Mage::log("trt");
     }
 }
