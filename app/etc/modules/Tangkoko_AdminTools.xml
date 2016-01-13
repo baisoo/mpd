@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tangkoko_AdminTools>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Tangkoko_AdminTools>
+    </modules>
+</config>
