@@ -16,7 +16,6 @@ class Mpd_Groupscatalog_Helper_Data extends Netzarbeiter_GroupsCatalog2_Helper_D
      */
     public function getCustomerGroupId()
     {
-        MAge::log(Mage::getSingleton('customer/session')->getData('mpd_group_visibility'));
         return Mage::getSingleton('customer/session')->getData('mpd_group_visibility');
     }
 }
