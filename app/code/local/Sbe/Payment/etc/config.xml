@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category	Infortis
+ * @package		Infortis_Infortis
+ * @author		Infortis
+ * @copyright	Copyright 2013 Infortis
+ */
+-->
+<config>
+    <modules>
+        <Sbe_Payment>
+            <version>0.0.1</version>
+        </Sbe_Payment>
+    </modules>
+</config>
