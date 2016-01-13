@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <!--@subject {{var store.getFrontendName()}}: Mise à jour de la facture n°{{var invoice.increment_id}} @-->
-=======
-<!--@subject {{var store.getFrontendName()}}: Facture N° {{var invoice.increment_id}} mise à jour @-->
->>>>>>> 8eaccf4eaa4edf47869a8504199ba92bdba1ab61
 <!--@vars
 {"store url=\"\"":"Store Url",
 "var logo_url":"Email Logo Image Url",
@@ -14,7 +10,6 @@
 "var store.getFrontendName()":"Store Name"}
 @-->
 <!--@styles
-<<<<<<< HEAD
 body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
@@ -49,39 +44,3 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 </tr>
 </table>
 </div>
-=======
-@-->
-
-{{template config_path="design/email/header"}}
-{{inlinecss file="email-inline.css"}}
-
-<table cellpadding="0" cellspacing="0" border="0">
-    <tr>
-        <td>
-            <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                    <td class="action-content">
-                        <h1>{{htmlescape var=$billing.getName()}},</h1>
-                        <p>Votre commande <span class="no-link">#{{var order.increment_id}}</span> a été mis à jour: <strong>{{var order.getStatusLabel()}}</strong></p>
-                        {{if comment}}
-                        <table cellspacing="0" cellpadding="0" class="message-container">
-                            <tr>
-                                <td>{{var comment}}</td>
-                            </tr>
-                        </table>
-                        {{/if}}
-                        <p>Vous pouvez vérifier l'état de votre commande en vous <a href="{{store url="customer/account/"}}">connectant à votre compte</a>.</p>
-                        <p>
-                            Si vous avez des questions, n'hésitez pas à nous contacter à
-                            <a href="mailto:{{var store_email}}">{{var store_email}}</a>
-                            {{depend store_phone}}ou par téléphone au <a href="tel:{{var phone}}">{{var store_phone}}</a>{{/depend}}.
-                        </p>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-{{template config_path="design/email/footer"}}
->>>>>>> 8eaccf4eaa4edf47869a8504199ba92bdba1ab61

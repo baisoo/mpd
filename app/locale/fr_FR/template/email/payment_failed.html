@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 {* This is a comment block
 
 Use vars: {{var var_name}}
 *}<!--@subject Rappel d'échec de transaction de paiement @-->
-=======
-<!--@subject Opération de paiement Rappel Échec @-->
->>>>>>> 8eaccf4eaa4edf47869a8504199ba92bdba1ab61
 <!--@vars
 {"var reason":"Transaction Failed Reason",
 "var checkoutType":"Checkout Type",
@@ -22,7 +18,6 @@ Use vars: {{var var_name}}
 
 <table>
     <thead>
-<<<<<<< HEAD
         <tr>
             <th>Une transaction de paiement a échoué.</th>
         </tr>
@@ -70,56 +65,5 @@ Use vars: {{var var_name}}
                 </p>
             </td>
         </tr>
-=======
-    <tr>
-        <th>Transaction de paiement a échoué.</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>
-            <p>
-                <b>Raison</b><br />
-                {{var reason}}
-            </p>
-            <p>
-                <b>Type de Paiement</b><br />
-                {{var checkoutType}}
-            </p>
-            <p>
-                <b>Client:</b><br />
-                <a href="mailto:{{var customerEmail}}">{{var customer}}</a> &lt;{{var customerEmail}}&gt;
-            </p>
-            <p>
-                <b>Produit</b><br />
-                {{var items}}
-            </p>
-            <p>
-                <b>Total:</b><br />
-                {{var total}}
-            </p>
-            <p>
-                <b>Adresse Facturation:</b><br />
-                {{var billingAddress.format('html')}}
-            </p>
-            <p>
-                <b>Adresse Livraison:</b><br />
-                {{var shippingAddress.format('html')}}
-            </p>
-            <p>
-                <b>Mode Livraison:</b><br />
-                {{var shippingMethod}}
-            </p>
-            <p>
-                <b>Mode de paiement:</b><br />
-                {{var paymentMethod}}
-            </p>
-            <p>
-                <b>Date et heure:</b><br />
-                {{var dateAndTime}}
-            </p>
-        </td>
-    </tr>
->>>>>>> 8eaccf4eaa4edf47869a8504199ba92bdba1ab61
     </tbody>
 </table>
