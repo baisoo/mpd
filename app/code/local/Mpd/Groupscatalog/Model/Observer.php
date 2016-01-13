@@ -18,7 +18,7 @@ class Mpd_Groupscatalog_Model_Observer extends Mage_Core_Model_Abstract
     {
         $customerSession = $observer->getEvent()->getCustomerSession();
         $customer  = Mage::getModel('customer/customer')->load($customerSession->getId());
-        $attr = $customer->getData('visibility_group');
-        $customerSession->setVisibilityGroup($attr);
+        $attr = $customer->getData('mpd_group_visibility');
+        $customerSession->setMpdGroupVisibility($attr);
     }
 }

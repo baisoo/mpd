@@ -57,7 +57,7 @@ foreach ($codes as $code)
 
 }
 
-
+/**
 // Create visibility_group attribute for customers
 $entity = $this->getEntityTypeId('customer');
 $this->addAttribute($entity, 'visibility_group', array(
@@ -78,7 +78,7 @@ $forms = array(
 $attribute = Mage::getSingleton('eav/config')->getAttribute($this->getEntityTypeId('customer'), 'visibility_group');
 $attribute->setData('used_in_forms', $forms);
 $attribute->save();
-
+**/
 
 Mage::log('end migration', null, null, true);
 $this->endSetup();

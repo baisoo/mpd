@@ -7,7 +7,16 @@
  * @license     All rights reserved
  */
 
-class Mpd_Groupscatalog_Helper_Data extends Mage_Core_Helper_Abstract
+class Mpd_Groupscatalog_Helper_Data extends Netzarbeiter_GroupsCatalog2_Helper_Data
 {
-
+    /**
+     * Return the customer id of the current customer
+     *
+     * @return int
+     */
+    public function getCustomerGroupId()
+    {
+        MAge::log(Mage::getSingleton('customer/session')->getData('mpd_group_visibility'));
+        return Mage::getSingleton('customer/session')->getData('mpd_group_visibility');
+    }
 }

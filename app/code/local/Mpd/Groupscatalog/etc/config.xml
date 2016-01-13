@@ -26,7 +26,23 @@
             <mpd_groupscatalog>
                 <class>Mpd_Groupscatalog_Helper</class>
             </mpd_groupscatalog>
+            <netzarbeiter_groupscatalog2>
+                <rewrite>
+                    <data>Mpd_Groupscatalog_Helper_Data</data>
+                </rewrite>
+            </netzarbeiter_groupscatalog2>
         </helpers>
+        <resources>
+            <mpd_groupscatalog_setup>
+                <setup>
+                    <module>Mpd_Groupscatalog</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mpd_groupscatalog_setup>
+        </resources>
     </global>
     <frontend>
         <events>
