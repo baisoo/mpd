@@ -1948,7 +1948,7 @@ a.availability-only { cursor:pointer; } /* It may also be a link to toggle more 
 /* Display elements inline, no floating */
 .product-view .add-to-cart { float:none; }
 .add-to-cart .qty-wrapper,
-.add-to-cart .button { display:inline-block; float: right; }
+.add-to-cart .button { display:inline-block; }
 .add-to-cart .qty-wrapper .qty { text-align:center; margin-right:10px; }
 
 /* PayPal
@@ -1968,7 +1968,7 @@ a.availability-only { cursor:pointer; } /* It may also be a link to toggle more 
    of the quantity field
 -------------------------------------------------------------- */
 .add-to-cart.left-side { float: none !important; /* In case floating is set in some other styles */ }
-.add-to-cart.left-side .button { float: right; }
+.add-to-cart.left-side .button { float: left; }
 .add-to-cart.left-side .qty-wrapper { line-height: 55px; /* The same height as button */ }
 .add-to-cart.left-side .qty-wrapper label { padding-left: 7px; }
 
@@ -3135,7 +3135,7 @@ a.availability-only { cursor:pointer; } /* It may also be a link to toggle more 
 	border-radius:50%;
 	background-image:none !important; /* To hide possible image bg from outdated custom CSS styles */
 }
-#scroll-to-top:hover { background-color: #b9131d; }
+#scroll-to-top:hover { background-color:#333; }
 
 
 
@@ -3541,11 +3541,3 @@ body.cms-index-index .breadcrumbs { display:none; }
 .section-line:after,
 .section-title:after
 { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
-
-
-.mpdGris
-{
-    margin-bottom: 20px;
-    height: 100px;
-    width: 250px;
-}

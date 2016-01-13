@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
 	<default>
-		
+	
 		<reference name="head">
 
 		<!-- JS -->
@@ -125,7 +125,6 @@
 		<remove name="left.permanent.callout"/>
 		
 		
-                
 		<!-- Right ====================================================================== -->
 		<reference name="right">
 		
@@ -160,7 +159,7 @@
 			<remove name="left.newsletter"/> <!-- Moved newsletter to the footer -->
 			<action method="unsetChild"><name>tags_popular</name></action>
 
-			<!--<block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>-->
+			<block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
 			<block type="reports/product_compared" name="right.reports.product.compared" template="reports/product_compared.phtml" />
 			<block type="reports/product_viewed" name="left.reports.product.viewed" template="reports/product_viewed.phtml" />
 			<block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml"/>
@@ -225,7 +224,7 @@
 			</block>
 
 			<!-- Mini compare -->
-			<!--<block type="catalog/product_compare_sidebar" name="compare.mini" as="compareMini" template="catalog/product/compare/mini.phtml"/>-->
+			<block type="catalog/product_compare_sidebar" name="compare.mini" as="compareMini" template="catalog/product/compare/mini.phtml"/>
 
 			<!-- Custom Top Links - can override Magento's Top Links -->
 			<block type="cms/block" name="block_header_top_links">
@@ -550,16 +549,16 @@
 				<action method="addTab" translate="title" module="payment"><alias>product.info.additional.recurring.schedule</alias><title>Recurring Profile</title><block>payment/catalog_product_view_profile</block><template>payment/catalog/product/view/profile/schedule.phtml</template></action>
 				
 				<!-- Product attributes -->
-				<!--<action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Additional Information</title><block>catalog/product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action>-->
+				<action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Additional Information</title><block>catalog/product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action>
 				
 				<!-- Reviews-->
 				<!-- Do not change 'tabreviews' alias. It is needed in JS scripts -->
-				<!--<action method="addTab" translate="title" module="review"
-					ifconfig="ultimo/product_page/collateral_reviews"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action>-->
+				<action method="addTab" translate="title" module="review"
+					ifconfig="ultimo/product_page/collateral_reviews"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action>
 				
 				<!-- Tags -->
-				<!--<action method="addTab" translate="title" module="tag"
-					ifconfig="ultimo/product_page/collateral_tags"><alias>tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action>-->
+				<action method="addTab" translate="title" module="tag"
+					ifconfig="ultimo/product_page/collateral_tags"><alias>tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action>
 
 				<!-- Custom blocks -->
 				<action method="addTab" translate="title" module="catalog"><alias>product_cms_block1</alias><title helper="ultimo/template_catalog_product_view/getCmsBlockTitle"><id>block_product_tab1</id></title><block>core/template</block><template>catalog/product/view/cms_block1.phtml</template></action>
